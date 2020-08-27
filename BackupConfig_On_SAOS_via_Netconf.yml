@@ -1,12 +1,12 @@
 ---
-  - name: JUNOS SOFTWARE
+  - name: SAOS SOFTWARE
     hosts: all
     gather_facts: no
 
     tasks:
-      - name: JUNOS BACKUP
-        junos_config:
+      - name: SAOS BACKUP
+        netconf_config:
           backup: yes
           backup_options:
-            filename: "{{ inventory_hostname }}.txt"
+            filename: "{{ inventory_hostname }}_SAOS.txt"
             dir_path: /u000/Juniper_Backup
