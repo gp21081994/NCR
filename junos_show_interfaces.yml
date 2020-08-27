@@ -1,0 +1,14 @@
+---
+  - name: JUNOS SHOW INTERFACES
+    hosts: all
+    gather_facts: no
+
+    tasks:
+      - name: show interfaces on Juniper device
+        junos_command:
+         commands: show interfaces
+        register: JUNOS_Output
+
+      - name: PRINT JUNOS RESULT
+        debug:
+          var: JUNOS_Output.stdout_lines
