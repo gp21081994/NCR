@@ -1,0 +1,17 @@
+---
+  - name: VYOS CONFIG GET
+    hosts: all
+    gather_facts: no
+
+    tasks:
+      - name: Get configuration of VYOS
+        vyos_facts:
+          gather_network_resources:
+            - all
+            - interfaces
+        register: VYOS_output
+
+      - name: PRINT CONFIG
+        debug:
+          msg: "{{ VYOS_output }}"
+
