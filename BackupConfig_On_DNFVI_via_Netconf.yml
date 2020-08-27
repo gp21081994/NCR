@@ -9,5 +9,5 @@
           backup: yes
           backup_options:
             filename: "{{ inventory_hostname }}_DNFVI.txt"
-            dir_path: /u000/Juniper_Backup
+            dir_path: /u000/Flexware_Backup
 
