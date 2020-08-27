@@ -1,0 +1,14 @@
+---
+  - name: SAOS CONFIG GET
+    hosts: all
+    gather_facts: no
+
+    tasks:
+      - name: Get running configuration and state data  in pretty format
+        netconf_get:
+         display: pretty
+        register: SAOS_Output
+
+      - name: PRINT SAOS RESULT
+        debug:
+          var: SAOS_Output.stdout
