@@ -1,0 +1,14 @@
+---
+  - name: DNFVI CONFIG GET
+    hosts: all
+    gather_facts: no
+
+    tasks:
+      - name: Get running configuration and state data  in pretty format
+        netconf_get:
+         display: pretty
+        register: DNFVI_Output
+
+      - name: PRINT DNFVI RESULT
+        debug:
+          var: DNFVI_Output.stdout
