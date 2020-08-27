@@ -7,9 +7,6 @@
       - name: JUNOS BACKUP
         junos_config:
           backup: yes
-        register: backup_location
-
-      - name: Copy backup files into /u000/Juniper_Backup/
-        copy:
-          src: "{{ backup_location.backup_path }}"
-          dest: "/u000/Juniper_Backup/{{inventory_hostname}}.config"
+          backup_options:
+            filename: "{{ inventory_hostname }}.txt"
+            dir_path: /u000/Juniper_Backup
