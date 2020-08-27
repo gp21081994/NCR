@@ -1,0 +1,15 @@
+---
+  - name: JUNOS SOFTWARE
+    hosts: all
+    gather_facts: no
+
+    tasks:
+      - name: JUNOS BACKUP
+        junos_config:
+          backup: yes
+        register: backup_location
+
+      - name: Copy backup files into /u000/Juniper_Backup/
+        copy:
+          src: "{{ backup_location.backup_path }}"
+          dest: "/u000/Juniper_Backup/{{inventory_hostname}}.config"
