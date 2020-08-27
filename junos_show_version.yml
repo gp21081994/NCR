@@ -1,0 +1,14 @@
+---
+  - name: JUNOS SHOW VERSION
+    hosts: all
+    gather_facts: no
+
+    tasks:
+      - name: RUN SHOW VERSION ON JUNOS DEVICE
+        junos_command:
+         commands: show version
+        register: JUNOS_Output
+
+      - name: PRINT JUNOS RESULT
+        debug:
+          var: JUNOS_Output.stdout_lines
