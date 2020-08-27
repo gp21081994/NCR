@@ -1,14 +1,13 @@
 ---
-  - name: JUNOS SHOW INTERFACES
+  - name: VYOS SOFTWARE
     hosts: all
     gather_facts: no
 
     tasks:
-      - name: show interfaces on Juniper device
-        junos_command:
-         commands: show interfaces
-        register: JUNOS_Output
+      - name: VYOS BACKUP
+        vyos_config:
+          backup: yes
+          backup_options:
+            filename: "{{ inventory_hostname }}_VMR.txt"
+            dir_path: /u000/Flexware_Backup
 
-      - name: PRINT JUNOS RESULT
-        debug:
-          var: JUNOS_Output.stdout_lines
