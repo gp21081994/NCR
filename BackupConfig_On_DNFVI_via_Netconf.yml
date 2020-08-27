@@ -1,0 +1,13 @@
+---
+  - name: DNFVI SOFTWARE
+    hosts: all
+    gather_facts: no
+
+    tasks:
+      - name: DNFVI BACKUP
+        netconf_config:
+          backup: yes
+          backup_options:
+            filename: "{{ inventory_hostname }}_DNFVI.txt"
+            dir_path: /u000/Juniper_Backup
+
