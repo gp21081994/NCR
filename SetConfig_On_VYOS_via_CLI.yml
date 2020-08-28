@@ -1,0 +1,12 @@
+---
+  - name: VYOS SOFTWARE
+    hosts: all
+    gather_facts: no
+
+    tasks:
+      - name: VYOS SET  CONFIG
+        vyos_config:
+          lines:
+            - set security firewall name VNF-IN-traffic rule 310 action 'accept'
+            - set security firewall name VNF-IN-traffic rule 310 destination port '2426'
+            - set security firewall name VNF-IN-traffic rule 310 protocol 'udp'
